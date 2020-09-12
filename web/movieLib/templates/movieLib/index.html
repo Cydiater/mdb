@@ -1,0 +1,69 @@
+{% load static %}
+
+<link rel = "stylesheet" type = "text/css" href = "{% static 'css/index.css' %}">
+
+<div id='navibar'>
+
+	<div class = 'navitem'>
+		<a href = "{% url 'movieLib:index' %}">Movies</a>
+	</div>
+
+	<div class = 'navitem'>
+		<a href = "{% url 'movieLib:actorIndex' %}">Actors</a>
+	</div>
+
+	<div class = 'navitem search'>
+		<form action = '{% url 'movieLib:search' %}' method = 'get'>
+			{% csrf_token %}
+			<input type = 'radio' name = 'category' id = 0 checked value = "movie">Movie
+			<input type = 'radio' name = 'category' id = 1 value = "actor">Actor
+			<input type = 'radio' name = 'category' id = 2 value = "comment">Comment
+			<input type = "search" placeholder = "Search" required name = 'search'>
+			<button type = "submit">Search</button>
+		</form>
+	</div>
+
+
+</div>
+
+<div id='movie_container' class = 'effect'>
+	{% for movie in page_obj %}
+	<div class='movie_item'>
+		<a href = "{% url 'movieLib:movie' movie.id %}">
+			<figure>
+				<img src = "{{ movie.imagePath }}">
+				<figCaption>{{ movie.name }}</figCaption>
+			</figure>
+		</a>
+	</div>
+	{% endfor %}
+</div>
+
+<div class="pagination">
+	<div class = 'page'><a href="?page=1">1</a></div>
+
+	<div style = "display:flex; margin: auto">
+		{% if page_obj.has_previous %}
+		<div class = 'page'><a href="?page={{ page_obj.previous_page_number }}"> {{ page_obj.previous_page_number}}</a></div>
+		{% else %}
+		<div class = 'page'></div>
+		{% endif %}
+
+		<div class = 'page'><a href="?page={{ page_obj.number }}"><b>{{ page_obj.number}}</b></a></div>
+
+		{% if page_obj.has_next %}
+		<div class = 'page'><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number}}</a></div>
+		{% else %}
+		<div class = 'page'></div>
+		{% endif %}
+
+	</div>
+
+	<div class = 'page'><a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></div>
+
+	<div style = "diaplay:flex; width: 90px; margin-left: 40px;">
+		<input type = 'text' id = 'pageText' name = 'page' style = "margin-top: 7px; margin-bottom: 7px; width: 30px; boxing-size: border-box; vertical-align: top;"> 
+		<button onclick = "window.location.replace(`?page=${document.getElementById('pageText').value}`)" style = "width: 30px; height: 21px; margin-top: 7px; margin-bottom: 7px; font-size: 10; text-align: center">Go</button>
+	</div>
+
+</div>

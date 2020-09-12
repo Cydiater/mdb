@@ -1,0 +1,70 @@
+{% load static %}
+<link rel = "stylesheet" type = "text/css" href = "{% static 'css/actor.css'%}">
+
+<div id='navibar'>
+
+	<div class = 'navitem'>
+		<a href = "{% url 'movieLib:index' %}">Movies</a>
+	</div>
+
+	<div class = 'navitem'>
+		<a href = "{% url 'movieLib:actorIndex' %}">Actors</a>
+	</div>
+
+	<div class = 'navitem search'>
+		<form action = '{% url 'movieLib:search' %}' method = 'get'>
+			{% csrf_token %}
+			<input type = 'radio' name = 'category' id = 0 checked value = "movie">Movie
+			<input type = 'radio' name = 'category' id = 1 value = "actor">Actor
+			<input type = 'radio' name = 'category' id = 2 value = "comment">Comment
+			<input type = "search" placeholder = "Search" required name = 'search'>
+			<button type = "submit">Search</button>
+		</form>
+	</div>
+
+
+</div>
+
+<div class = 'area'>
+	<div class = 'cover'>		
+		<img src = "{{ actor.imagePath }}">
+	</div>
+	<div class = 'info'> 
+		<ul>
+			<li><b>姓名：</b>{{ actor.name }}</li>
+			<li><b>性别：</b>{{ actor.gender }}</li>
+			<li><b>生日：</b>{{ actor.birthday }}</li>
+			<li><b>星座：</b>{{ actor.constellation }}</li>
+			<li><b>出生地：</b>{{ actor.birthplace }}</li>
+			<li><b>职业：</b>{{ actor.profession }}</li>
+		</ul>
+	</div>
+</div>
+
+<div class = 'area'>{{ actor.description | linebreaks }}</div>
+
+<div class = 'area'>
+	{% for movie in actor.movie_set.all %}
+	<div class = 'movie'>
+		<a href = "{% url 'movieLib:movie' movie.id %}">
+			<figure>
+				<img src = '{{movie.imagePath}}'>
+				<figCaption>{{ movie.name }}</figCaption>
+			</figure>
+		</a>
+	</div>
+	{% endfor %}
+</div>
+
+<div class = 'area'>
+	{% for actor, cnt in adjacencyActors %}
+	<div class = 'actor'>
+		<a href = "{% url 'movieLib:actor' actor.id %}">
+			<figure>
+				<img src = '{{ actor.imagePath }}'>
+				<figCaption> {{ actor.name }} <br>合作作品数({{ cnt }}) </figCaption>
+			</figure>
+		</a>
+	</div>
+	{% endfor %}
+</div>

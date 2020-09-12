@@ -1,0 +1,45 @@
+@import "common.css";
+
+#actor_container {
+	width: 840px;
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	padding-bottom: 20px;
+}
+
+.actor_item {
+	text-align: center;
+	width: 200px;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.actor_item figure {
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.actor_item img {
+	width: 120px;
+	height: 168px;
+	margin: 20px;
+}
+
+.actor_item a {
+	text-decoration: none;
+	color: black;
+}
+
+.actor_item img:hover {
+	transform: scale(1.01, 1.01);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.23), 
+				0 6px 6px rgba(0, 0, 0, 0.3);
+}
+

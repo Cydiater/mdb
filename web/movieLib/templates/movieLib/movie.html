@@ -1,0 +1,76 @@
+{% load static %}
+
+<link rel = "stylesheet" type = "text/css" href = "{% static 'css/movie.css'%}">
+
+<div class = 'background' style = "background-image: url({{ movie.imagePath }})">
+	<div class = 'blur'>
+
+		<div class = 'movie_cover'>
+			<img src = "{{ movie.imagePath }}" class = "effect">
+		</div>
+
+		<div class = 'movie_info'>
+			<h1>{{ movie.name }}</h1>
+
+			<div class = "description">   {{movie.description}}</div>
+		</div>
+
+		<div class = 'actors_and_rating'>
+
+			<div class = 'rating' style = "background-image: url(/static/image/resource/leaves.png)">
+				<div class = 'rating_text'>{{ movie.rating }}</div>
+				<div class = 'genre_text'>{{ movie.genre }}</div>
+			</div>
+
+			<div class = 'actors'>
+				{% for actor in movie.actors.all %}
+				<div class = 'actor'>
+					<a href = "{% url 'movieLib:actor' actor.id %}">
+						<figure>
+							<img src = '{{ actor.imagePath }}'>
+						</figure>
+					</a>
+				</div>	
+				{% endfor %}
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+<div id='navibar'>
+
+	<div class = 'navitem'>
+		<a href = "{% url 'movieLib:index' %}">Movies</a>
+	</div>
+
+	<div class = 'navitem'>
+		<a href = "{% url 'movieLib:actorIndex' %}">Actors</a>
+	</div>
+
+	<div class = 'navitem search'>
+		<form action = '{% url 'movieLib:search' %}' method = 'get'>
+			{% csrf_token %}
+			<input type = 'radio' name = 'category' id = 0 checked value = "movie">Movie
+			<input type = 'radio' name = 'category' id = 1 value = "actor">Actor
+			<input type = 'radio' name = 'category' id = 2 value = "comment">Comment
+			<input type = "search" placeholder = "Search" required name = 'search'>
+			<button type = "submit">Search</button>
+		</form>
+	</div>
+
+
+</div>
+
+
+<div class = 'comments'>
+
+	<p style="background-image: url('{{ movie.imagePath }}')">短评<p>
+	{% for comment in movie.comment_set.all %}
+	<hr class = 'myStyle'>
+	<div class = 'comment'>{{ comment.content }}</div>
+	{% endfor %}
+	<hr class = 'myStyle'>
+
+</div>

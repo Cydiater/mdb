@@ -1,0 +1,151 @@
+@import 'common.css';
+
+body {
+	margin: 0px;
+}
+
+.background {
+	background-position: bottom;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	height: 100%;
+	width: 100%;
+}
+
+.blur {
+	background: rgba(0, 0, 0, 0.5); 
+	backdrop-filter: blur(200px); 
+	-webkit-backdrop-filter: blur(200px); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	color: white;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.movie_cover {
+	height: 400px;
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 230px;
+}
+
+.movie_cover img {
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.movie_info {
+	height: 400px;
+	width: 40%;
+	text-align: justify;
+	margin-top: 200px;
+}
+
+.description {
+	width: 550px;
+	height: 300px;
+	color: rgba(255, 255, 255, 0.7);
+	white-space: pre-wrap;
+	overflow: scroll;
+	margin-top: 50px;
+}
+
+.actors_and_rating {
+	width: 30%;
+	margin-top: 200px;
+}
+
+.rating {
+	height: 200px;
+	margin-top: 50px;
+	background-position: center;
+	background-size: 50%;
+	background-repeat: no-repeat;
+	padding: 0.1px;
+}
+
+.genre_text {
+	font-size: 13;
+	font-weight: 300;
+	color: #D9B04E;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.rating_text {
+	margin-top: 50px;
+	font-size: 40;
+	font-weight: 700;
+	color: #D9B04E;
+	text-align: center;
+}
+
+.actors {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	display: flex;
+	flex-wrap: nowrap;
+	width: 400px;
+	overflow: scroll;
+}
+
+.actor {
+	margin: 10px;
+}
+
+.actor figure {
+	margin: 5px;
+}
+
+.actor img {
+	height: 100px;
+	width: 71px;
+	border-radius: 30px;
+}
+
+.actor figure:hover {
+	transform: scale(1.1, 1.1);
+}
+
+.comments {
+	width: 750px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+}
+
+.comments p {
+	font-weight: bold;
+	font-size: 25;
+	text-align: left;
+	margin-left: 20px;
+	width: 60px;
+
+	-webkit-text-stroke: 0.5px black;
+	text-stroke: 0.5px black;
+	background-position: top;
+	-webkit-background-clip: text;  /* Chrome 用户注意加 -webkit 前缀 */
+	background-clip: text;
+	color: transparent;     
+}
+
+.comment {
+	width: 700px;
+	text-align: justify;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: piaoyi;
+}

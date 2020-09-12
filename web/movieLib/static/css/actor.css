@@ -1,0 +1,37 @@
+@import 'common.css';
+
+body {
+	background-color: #F6F6F6;
+}
+
+.movie {
+	margin: 10px;
+	text-align: center;
+}
+
+.movie img {
+	width: 120px;
+	height: 168px;
+}
+
+.actor {
+	margin: 10px;
+	text-align: center;
+}
+
+a {
+	color: black;
+}
+
+.actor img {
+	width: 120px;
+	height: 168px;
+}
+
+figure {
+	margin: 0px;
+}
+
+figCaption {
+	font-size: 10;
+}

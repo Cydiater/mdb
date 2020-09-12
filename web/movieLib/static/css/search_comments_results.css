@@ -1,0 +1,12 @@
+@import 'common.css';
+
+.container {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+a {
+	font-size: 15;
+	color: black;
+}
